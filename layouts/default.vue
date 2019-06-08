@@ -39,21 +39,7 @@
       <!-- end of search -->
       <v-spacer></v-spacer>
       <!-- hamburger -->
-      <v-toolbar-title class="ml-0 pl-3">
-        <v-avatar size="32px" tile>
-          <!-- <img
-            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-            alt="Vuetify"
-            class="hidden-sm-and-down"
-          > -->
-          <img src="https://randomuser.me/api/portraits/men/85.jpg" class="hidden-sm-and-down">
-        </v-avatar>
-        <span class="hidden-sm-and-down">Ryan Fauzi</span>
-        <!-- <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon> -->
-        <v-btn icon>
-          <v-icon @click.stop="drawer = !drawer">expand_more</v-icon>
-        </v-btn>
-      </v-toolbar-title>
+      
       <!-- end of hamburger -->
     </v-toolbar>
     <v-content>
