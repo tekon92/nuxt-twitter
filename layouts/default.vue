@@ -1,8 +1,110 @@
 <template>
   <v-app id="inspire">
-    <!-- navigation drawer -->
+    <v-navigation-drawer 
+      v-model="drawer"
+      disable-resize-watcher
+      temporary
+      fixed
+      right
+      app>
+      <v-toolbar flat>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title class="title">
+              Account Info
+            </v-list-tile-title>
+            <v-btn icon>
+              <v-icon @click.stop="drawer = !drawer">close</v-icon>
+            </v-btn>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
 
-    <!-- end of navigation drawer -->
+      <v-divider></v-divider>
+
+      <v-toolbar flat class="transparent"> 
+        <v-list class="pa-0">
+          <v-list-tile avatar>
+            <v-list-tile-avatar>
+              <img src="https://randomuser.me/api/portraits/men/85.jpg">
+            </v-list-tile-avatar>
+
+            <v-list-tile-content>
+              <v-list-tile-title>Ryan Fauzi</v-list-tile-title>
+              <v-list-tile-sub-title>@tekon92</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
+
+      <v-divider></v-divider>
+
+      <v-layout row align-center justify-center >
+        <v-flex xs6>
+            <p class="text-xs-center">
+              <nuxt-link to="/tekon92/following">339 Following</nuxt-link>
+            </p>
+          </v-flex>
+          <v-flex xs6>
+            <p class="text-xs-center">
+              <nuxt-link to="/tekon92/followers">339 Followers</nuxt-link>
+            </p>
+          </v-flex>
+      </v-layout>
+      <v-divider></v-divider>
+
+      <v-list dense>
+        <template v-for="item in items">
+
+          <v-layout
+            v-if="item.heading"
+            :key="item.heading"
+            row
+            align-center
+          >
+
+
+            <v-flex xs6>
+              <v-subheader v-if="item.heading">
+                {{ item.heading }}
+              </v-subheader>
+            </v-flex>
+            <v-flex xs6 class="text-xs-center">
+              <v-switch v-model="item.model"></v-switch>
+            </v-flex>
+          </v-layout>
+          
+            <v-divider
+              v-else-if="item.divider"
+              :key="item.divider"
+            >
+            </v-divider>
+         
+
+          <v-list-tile v-if="item.icon" :key="item.text" :to="'/' +item.route">
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                {{ item.text }}
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile v-if="item.s_text" :key="item.s_text">
+            <!-- <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action> -->
+            <v-list-tile-content>
+              <v-list-tile-title>
+                {{ item.s_text }} 
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </template>
+      </v-list>
+    </v-navigation-drawer>
 
     <v-toolbar
       color="blue darken-3"
@@ -39,7 +141,21 @@
       <!-- end of search -->
       <v-spacer></v-spacer>
       <!-- hamburger -->
-      
+      <v-toolbar-title class="ml-0 pl-3">
+        <v-avatar size="32px" tile>
+          <!-- <img
+            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
+            alt="Vuetify"
+            class="hidden-sm-and-down"
+          > -->
+          <img src="https://randomuser.me/api/portraits/men/85.jpg" class="hidden-sm-and-down">
+        </v-avatar>
+        <span class="hidden-sm-and-down">Ryan Fauzi</span>
+        <!-- <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon> -->
+        <v-btn icon>
+          <v-icon @click.stop="drawer = !drawer">expand_more</v-icon>
+        </v-btn>
+      </v-toolbar-title>
       <!-- end of hamburger -->
     </v-toolbar>
     <v-content>
